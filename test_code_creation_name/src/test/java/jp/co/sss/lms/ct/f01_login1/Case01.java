@@ -48,11 +48,11 @@ public class Case01 {
 		//ログイン画面のURLに遷移
 		goTo("http://localhost:" + port + "/lms/");	
 		
-		//タイトルの整合性をチェック
+		//タイトルが正しいか検証
 		String title = webDriver.getTitle();
 		assertEquals("ログイン | LMS", title);
 			
-		//ボタンの整合性をチェック
+		//ボタンが正しいか検証
 		WebElement loginButtonElement = webDriver.findElement(By.cssSelector(".btn-primary"));
 		assertEquals("ログイン", loginButtonElement.getAttribute("value"));
 		
