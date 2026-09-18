@@ -10,6 +10,8 @@ import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.server.LocalServerPort;
 
@@ -50,6 +52,14 @@ public class Case01 {
 		String title = webDriver.getTitle();
 		
 		assertEquals("ログイン | LMS", title);
+		
+		WebElement loginIdInput = webDriver.findElement(By.id("loginId"));
+		
+		assertTrue(loginIdInput.isDisplayed());
+		
+		WebElement passwordInput = webDriver.findElement(By.id("password"));
+		
+		assertTrue(passwordInput.isDisplayed());
 		
 	}
 
