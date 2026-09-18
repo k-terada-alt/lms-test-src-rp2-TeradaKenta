@@ -45,21 +45,19 @@ public class Case01 {
 	@DisplayName("テスト01 トップページURLでアクセス")
 	void test01() {
 		
-		goTo("http://localhost:" + port + "/lms/");
+		//ログイン画面のURLに遷移
+		goTo("http://localhost:" + port + "/lms/");	
 		
-		getEvidence(new Object() {});
-		
+		//タイトルの整合性をチェック
 		String title = webDriver.getTitle();
-		
 		assertEquals("ログイン | LMS", title);
+			
+		//ボタンの整合性をチェック
+		WebElement loginButtonElement = webDriver.findElement(By.cssSelector(".btn-primary "));
+		assertEquals("ログイン", loginButtonElement.getAttribute("value"));
 		
-		WebElement loginIdInput = webDriver.findElement(By.id("loginId"));
-		
-		assertTrue(loginIdInput.isDisplayed());
-		
-		WebElement passwordInput = webDriver.findElement(By.id("password"));
-		
-		assertTrue(passwordInput.isDisplayed());
+		//エビデンスを取得
+		getEvidence(new Object() {});
 		
 	}
 
