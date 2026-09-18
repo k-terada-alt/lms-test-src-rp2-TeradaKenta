@@ -53,7 +53,7 @@ public class Case01 {
 		assertEquals("ログイン | LMS", title);
 			
 		//ボタンの整合性をチェック
-		WebElement loginButtonElement = webDriver.findElement(By.cssSelector(".btn-primary "));
+		WebElement loginButtonElement = webDriver.findElement(By.cssSelector(".btn-primary"));
 		assertEquals("ログイン", loginButtonElement.getAttribute("value"));
 		
 		//エビデンスを取得
