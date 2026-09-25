@@ -60,8 +60,7 @@ public class Case06 {
 		assertEquals("ログイン", loginButtonElement.getAttribute("value"));
 
 		//エビデンスを取得
-		getEvidence(new Object() {
-		});
+		getEvidence(new Object() {});
 
 	}
 
