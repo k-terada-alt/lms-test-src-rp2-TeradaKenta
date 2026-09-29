@@ -59,8 +59,7 @@ public class Case08 {
 		assertEquals("ログイン", loginButtonElement.getAttribute("value"));
 
 		//エビデンスを取得
-		getEvidence(new Object() {
-		});
+		getEvidence(new Object() {});
 
 	}
 
@@ -87,8 +86,7 @@ public class Case08 {
 		assertEquals("コース詳細 | LMS", webDriver.getTitle());
 
 		//エビデンスを取得
-		getEvidence(new Object() {
-		});
+		getEvidence(new Object() {});
 
 	}
 
@@ -97,8 +95,10 @@ public class Case08 {
 	@DisplayName("テスト03 提出済の研修日の「詳細」ボタンを押下しセクション詳細画面に遷移")
 	void test03() {
 
+		//セクション一覧の行要素を取得
 		List<WebElement> sectionRows = webDriver.findElements(By.cssSelector("table.sctionList tr"));
 
+		//提出済みの行を探索し「詳細」ボタンを押下
 		for (WebElement row : sectionRows) {
 			scrollBy("50");
 			List<WebElement> cellsElements = row.findElements(By.tagName("td"));
@@ -109,10 +109,12 @@ public class Case08 {
 			}
 		}
 
+		//タイトルが正しいか検証
 		assertEquals("セクション詳細 | LMS", webDriver.getTitle());
 
-		getEvidence(new Object() {
-		});
+		//エビデンスを取得
+		getEvidence(new Object() {});
+
 	}
 
 	@Test
@@ -120,14 +122,17 @@ public class Case08 {
 	@DisplayName("テスト04 「確認する」ボタンを押下しレポート登録画面に遷移")
 	void test04() {
 
+		//「提出済み日報【デモ】を確認する」ボタンを押下
 		webDriver.findElement(By.cssSelector("input[value='提出済み日報【デモ】を確認する']")).click();
 
 		pageLoadTimeout(10);
 
+		//タイトルが正しいか検証
 		assertEquals("レポート登録 | LMS", webDriver.getTitle());
 
-		getEvidence(new Object() {
-		});
+		//エビデンスを取得
+		getEvidence(new Object() {});
+
 	}
 
 	@Test
@@ -135,22 +140,23 @@ public class Case08 {
 	@DisplayName("テスト05 報告内容を修正して「提出する」ボタンを押下しセクション詳細画面に遷移")
 	void test05() {
 
+		//報告内容を修正
 		WebElement reportElement = webDriver.findElement(By.className("form-control"));
-
 		reportElement.clear();
-
 		reportElement.sendKeys("test");
 
 		pageLoadTimeout(10);
 
+		//「提出する」ボタンを押下
 		webDriver.findElement(By.xpath("//button[text()='提出する']")).click();
 
 		pageLoadTimeout(10);
 
-		getEvidence(new Object() {
-		});
-
+		//タイトルが正しいか検証
 		assertEquals("セクション詳細 | LMS", webDriver.getTitle());
+
+		//エビデンスを取得
+		getEvidence(new Object() {});
 
 	}
 
@@ -159,14 +165,16 @@ public class Case08 {
 	@DisplayName("テスト06 上部メニューの「ようこそ○○さん」リンクからユーザー詳細画面に遷移")
 	void test06() {
 
+		//ユーザー詳細画面へ遷移するリンクを押下
 		webDriver.findElement(By.xpath("//small[text()='ようこそ受講生ＡＡ１さん']")).click();
 
 		pageLoadTimeout(10);
 
+		//タイトルが正しいか検証
 		assertEquals("ユーザー詳細", webDriver.getTitle());
 
-		getEvidence(new Object() {
-		});
+		//エビデンスを取得
+		getEvidence(new Object() {});
 
 	}
 
@@ -177,8 +185,10 @@ public class Case08 {
 
 		scrollBy("100");
 
+		//レポート一覧の行要素を取得
 		List<WebElement> sectionRows = webDriver.findElements(By.cssSelector("table.table-hover tr"));
 
+		//該当レポートの「詳細」ボタンを押下
 		for (WebElement row : sectionRows) {
 			scrollBy("50");
 			List<WebElement> cellsElements = row.findElements(By.tagName("td"));
@@ -191,10 +201,11 @@ public class Case08 {
 			break;
 		}
 
+		//修正内容が画面上に反映されているか検証
 		assertTrue(!webDriver.findElements(By.xpath("//*[contains(text(),'テスト')]")).isEmpty());
 
-		getEvidence(new Object() {
-		});
+		//エビデンスを取得
+		getEvidence(new Object() {});
 
 	}
 
