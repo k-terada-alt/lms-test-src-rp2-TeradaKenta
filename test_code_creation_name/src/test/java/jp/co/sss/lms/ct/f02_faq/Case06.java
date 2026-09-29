@@ -129,6 +129,9 @@ public class Case06 {
 				break;
 			}
 		}
+		
+		//タイトルを確実に取得するためコース詳細画面の見出しが表示されるまで最大10秒待機
+		visibilityTimeout(By.tagName("h2"), 10);
 
 		//タイトルが正しいか検証
 		assertEquals("よくある質問 | LMS", webDriver.getTitle());
